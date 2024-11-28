@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const RetornoPesquisa = ({pesquisa, setPesquisa}) => {
+const RetornoPesquisa = ({pesquisa, setPesquisa, setValorInput}) => {
 
     const [retornoBusca, setRetornoBusca] = useState([])
 
@@ -22,13 +22,14 @@ const RetornoPesquisa = ({pesquisa, setPesquisa}) => {
 
     },[pesquisa])
 
+
   return (
    
-    <datalist id='buscaFilmes'>
+    <ul id='buscaFilmes'>
         {retornoBusca.map((p)=>(
-        <option key={p.id} value={p.original_title}></option>
+        <li key={p.id} onClick={setValorInput(p.original_title)}>{p.original_title}</li>
         ))}
-    </datalist>
+    </ul>
     
   )
 }

@@ -4,6 +4,8 @@ import RetornoPesquisa from "./RetornoPesquisa";
 
 const PesquisaFilme = ({pesquisa, setPesquisa})=>{
 
+    const [valorInput, setValorInput] = useState();
+
 
     const handlePesquisa = (e)=>{
         
@@ -11,13 +13,15 @@ const PesquisaFilme = ({pesquisa, setPesquisa})=>{
 
         setPesquisa(valor)
 
+        setValorInput('')
+
     }
 
     return(
             <div>
             <label>Filme</label>
-            <input type="text" onChange={handlePesquisa} list="buscaFilmes"/>
-            <RetornoPesquisa pesquisa={pesquisa} setPesquisa={setPesquisa}/>
+            <input type="text" onChange={handlePesquisa} value={valorInput}/>
+            <RetornoPesquisa pesquisa={pesquisa} setPesquisa={setPesquisa} setValorInput={setValorInput}/>
             </div>
 
     )
