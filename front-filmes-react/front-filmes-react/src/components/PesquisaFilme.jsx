@@ -1,17 +1,9 @@
 import { useEffect, useState } from "react";
+import RetornoPesquisa from "./RetornoPesquisa";
 
 
-const PesquisaFilme = ()=>{
+const PesquisaFilme = ({pesquisa, setPesquisa})=>{
 
-    const [pesquisa, setPesquisa] = useState()
-    const [retornoPesquisa, setRetornoPesquisa] = useState([])
-
-    const handleSubmit = (e)=>{
-
-        e.preventDefault();
-
-        console.log("formulario enviado")
-    }
 
     const handlePesquisa = (e)=>{
         
@@ -21,22 +13,13 @@ const PesquisaFilme = ()=>{
 
     }
 
-    useEffect(()=>{
-
-        console.log(pesquisa)
-
-    }, [pesquisa])
-
     return(
-        <form onSubmit={handleSubmit}>
+            <div>
             <label>Filme</label>
-            <input type="text" onChange={handlePesquisa}/>
-            <datalist>
-                {()=>retornoPesquisa.map((p)=>{
-                    <option value={p}></option>
-                    })}
-            </datalist>
-        </form>
+            <input type="text" onChange={handlePesquisa} list="buscaFilmes"/>
+            <RetornoPesquisa pesquisa={pesquisa} setPesquisa={setPesquisa}/>
+            </div>
+
     )
 }
 
