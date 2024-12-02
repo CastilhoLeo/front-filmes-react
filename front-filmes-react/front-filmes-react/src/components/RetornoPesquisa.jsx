@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { AppContext } from '../App'
 
-const RetornoPesquisa = ({pesquisa, setPesquisa, setValorInput}) => {
+const RetornoPesquisa = ({selecao, setSelecao}) => {
 
     const [retornoBusca, setRetornoBusca] = useState([])
 
+    const {pesquisa, setPesquisa, selecionado, setSelecionado} = useContext(AppContext)
+
     useEffect(()=>{
+      
+        if(!selecao){
 
         const filmes = async ()=> {
 
@@ -18,16 +23,38 @@ const RetornoPesquisa = ({pesquisa, setPesquisa, setValorInput}) => {
 
         }
 
-        filmes();
+        filmes();}
+        else{
+
+          const sugestoes = async ()=>{
+
+            const response = await fetch(`http://localhost:8080/sugestao/${selecionado}`)
+
+          }
+        }
 
     },[pesquisa])
+
+
+
+    const handleFilmeSelecionado = (f)=>{
+
+        setPesquisa(f.original_title)
+
+        setSelecao(true)
+
+        setSelecionado(f.id)
+
+        console.log(f.id)
+        
+    }
 
 
   return (
    
     <ul id='buscaFilmes'>
-        {retornoBusca.map((p)=>(
-        <li key={p.id} onClick={setValorInput(p.original_title)}>{p.original_title}</li>
+        {!selecao && retornoBusca.map((p)=>(
+        <li key={p.id} onClick={()=>handleFilmeSelecionado(p)}>{p.original_title}</li>
         ))}
     </ul>
     

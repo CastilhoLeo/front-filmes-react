@@ -1,27 +1,31 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import RetornoPesquisa from "./RetornoPesquisa";
+import { AppContext } from "../App";
 
 
-const PesquisaFilme = ({pesquisa, setPesquisa})=>{
+const PesquisaFilme = ()=>{
 
-    const [valorInput, setValorInput] = useState();
+    const [selecao, setSelecao] = useState(false)
+
+    const {pesquisa, setPesquisa, selecionado, setSelecionado} = useContext(AppContext)
+
 
 
     const handlePesquisa = (e)=>{
-        
+
+        setSelecao(false)
+       
         const valor = e.target.value
 
         setPesquisa(valor)
-
-        setValorInput('')
 
     }
 
     return(
             <div>
             <label>Filme</label>
-            <input type="text" onChange={handlePesquisa} value={valorInput}/>
-            <RetornoPesquisa pesquisa={pesquisa} setPesquisa={setPesquisa} setValorInput={setValorInput}/>
+            <input type="text" onChange={handlePesquisa} value={pesquisa}/>
+            <RetornoPesquisa selecao={selecao} setSelecao={setSelecao}/>
             </div>
 
     )
