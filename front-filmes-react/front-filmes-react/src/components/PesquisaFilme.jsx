@@ -1,13 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import {  useState } from "react";
 import RetornoPesquisa from "./RetornoPesquisa";
-import { AppContext } from "../App";
+import useAppContext from "../hooks/useAppContext";
 
 
 const PesquisaFilme = ()=>{
 
     const [selecao, setSelecao] = useState(false)
 
-    const {pesquisa, setPesquisa, selecionado, setSelecionado} = useContext(AppContext)
+    const {pesquisa, setPesquisa, selecionado, setSelecionado} = useAppContext()
 
 
 

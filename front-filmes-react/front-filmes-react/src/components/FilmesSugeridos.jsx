@@ -1,10 +1,10 @@
 import { useContext, useEffect } from "react"
-import { AppContext } from "../App"
+import useAppContext from "../hooks/useAppContext"
 
 
 const FilmesSugeridos = () => {
 
-  const {selecionado, setSelecionado, sugestoes, setSugestoes} = useContext(AppContext)
+  const {selecionado, setSelecionado, sugestoes, setSugestoes} = useAppContext()
 
 
   useEffect(()=>{

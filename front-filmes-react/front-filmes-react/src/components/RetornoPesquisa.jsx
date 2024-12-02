@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { AppContext } from '../App'
+import React, {useEffect, useState } from 'react'
+import useAppContext from '../hooks/useAppContext'
 
 const RetornoPesquisa = ({selecao, setSelecao}) => {
 
     const [retornoBusca, setRetornoBusca] = useState([])
 
-    const {pesquisa, setPesquisa, selecionado, setSelecionado} = useContext(AppContext)
+    const {pesquisa, setPesquisa, selecionado, setSelecionado} = useAppContext()
 
     useEffect(()=>{
       

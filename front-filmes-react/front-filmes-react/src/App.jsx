@@ -1,11 +1,11 @@
 
-import { createContext, useState } from 'react'
+import { useState } from 'react'
+import { AppContext } from './context/AppContext'
 import './App.css'
 import Header from './components/Header'
 import PesquisaFilme from './components/PesquisaFilme'
 import FilmesSugeridos from './components/FilmesSugeridos'
 
-export const AppContext = createContext(null)
 
 function App() {
   
